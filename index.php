@@ -12,6 +12,8 @@ and open the template in the editor.
     <body>
         <?php
             echo "hola web 123...";
+            echo "<br>";
+            echo "no me creo que esto funcione!!!!";
         ?>
     </body>
 </html>
