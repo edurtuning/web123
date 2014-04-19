@@ -13,7 +13,7 @@ and open the template in the editor.
         <?php
             echo "hola web 123...";
             echo "<br>";
-            echo "no me creo que esto funcione!!!!";
+            echo "modificado desde el sobremesa!!!!";
         ?>
     </body>
 </html>
