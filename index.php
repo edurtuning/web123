@@ -9,6 +9,10 @@
         <style>
             @import url(http://fonts.googleapis.com/css?family=Lobster);
             
+            select{
+                max-width: 320px;
+            }
+            
             body{
                 background-image: url(fondo.jpg);
                 background-position: center top;
@@ -20,7 +24,7 @@
                 font-size: 4em;
             }
             div#comparacion{
-                display: none;
+                
             }
             
             div#cm{
@@ -91,7 +95,7 @@
         <h1 id="titulo">Screen Size Calculator</h1>
         <div id="contenido">
         <?php
-            $pulgadas2 =  0.0;
+            
             if(isset($_POST['pulgadas'])){
                 
                 $pulgadas=$_POST['pulgadas'];
@@ -105,6 +109,11 @@
                 $alto = sin($angulo) * $diagonalEnCm;
                 $ancho = cos($angulo) * $diagonalEnCm;
             }
+            
+            $pulgadas2 =  0.0;
+            if(isset($_POST['pulgadas2'])){
+                $pulgadas2 = $_POST['pulgadas2'];
+            }
         ?>
         <form action="" method="post">
             
@@ -115,11 +124,9 @@
             <br>
             <label for="formato">Display Format:</label>
             <select name="formato" id="formato">
-                <option value="1.77777777">16:9 HD Phones</option>
-                <option value="1.5">3:2 (iPhone, 480x320)</option>
-                <option value="1.33333333">4:3 (iPad, Galaxy Y, 320*240)</option>
-                <option value="1.66666666">16:10 (Galaxy S, 800*480)</option>
-                <option value="1.25">5:4 (Monitor 1280x1024)</option> 
+                    <?php
+                        include 'oth/opcioneslistaformatos.html';
+                    ?>
             </select>
             <br>
             <button type="button" onclick="comprobarVisibildad()">Compare 2 screens</button>
@@ -133,11 +140,9 @@
                 <br>
                 <label for="formato2">Display Format:</label>
                 <select name="formato2" id="formato2">
-                    <option value="1.77777777">16:9 HD Phones</option>
-                    <option value="1.5">3:2 (iPhone, 480x320)</option>
-                    <option value="1.33333333">4:3 (iPad, Galaxy Y, 320*240)</option>
-                    <option value="1.66666666">16:10 (Galaxy S, 800*480)</option>
-                    <option value="1.25">5:4 (Monitor 1280x1024)</option>
+                    <?php
+                        include 'oth/opcioneslistaformatos.html';
+                    ?>
                 </select>
                 <br>
             </div>
@@ -180,6 +185,8 @@
             
         ?>
         <script>
+            //llamamos por primera vez para ocultarlo al cargar
+            comprobarVisibildad();
             function comprobarVisibildad(){
                 if(document.getElementById("comparacion").style.display === "none"){
                     document.getElementById("comparacion").style.display = "block";
